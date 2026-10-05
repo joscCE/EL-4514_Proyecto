@@ -265,14 +265,8 @@ Voltaje sobre la carga
 ## 5.1 Cable y antena TX
 
 Se calcula el coeficiente de reflexión a partir de la ROE:
-
-\[
-|\Gamma|=\frac{\mathrm{ROE}-1}{\mathrm{ROE}+1}
-\]
-
+$$|\Gamma| = \frac{\mathrm{ROE}-1}{\mathrm{ROE}+1}$$
 La potencia entregada a la antena se calcula considerando las pérdidas del cable y la potencia reflejada.
-
----
 
 ## 5.2 Densidad de potencia
 
