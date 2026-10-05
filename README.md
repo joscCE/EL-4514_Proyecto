@@ -288,24 +288,21 @@ $$\eta_{0} \approx 377\,\Omega$$
 
 Se utiliza el área efectiva de la antena RX:
 
-\[
+$$
 A_e=\frac{G_\mathrm{RX}\lambda^2}{4\pi}
-\]
+$$
 
 y:
 
-\[
-P_r=\overline S A_e\,PLF
-\]
+$$
+P_r=\overline{S}\,A_e\,PLF
+$$
 
 Esto es equivalente a la ecuación de Friis:
 
-\[
-P_r =
-P_\mathrm{rad}G_\mathrm{TX}G_\mathrm{RX}
-\left(\frac{\lambda}{4\pi d}\right)^2PLF
-\]
-
+$$
+P_r = P_\mathrm{rad}\,G_\mathrm{TX}\,G_\mathrm{RX}\left(\frac{\lambda}{4\pi d}\right)^2 PLF
+$$
 ---
 
 ## 5.4 Pérdida por polarización
