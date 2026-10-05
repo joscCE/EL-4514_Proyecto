@@ -303,20 +303,16 @@ Esto es equivalente a la ecuación de Friis:
 $$
 P_r = P_\mathrm{rad}\,G_\mathrm{TX}\,G_\mathrm{RX}\left(\frac{\lambda}{4\pi d}\right)^2 PLF
 $$
+
 ---
 
 ## 5.4 Pérdida por polarización
 
 El factor de pérdida de polarización se calcula como:
 
-\[
-PLF=
-\left|
-\hat e_\mathrm{onda}^{*}
-\cdot
-\hat e_\mathrm{antena}
-\right|^2
-\]
+$$
+PLF = \left| \hat{e}_\mathrm{onda}^{*} \cdot \hat{e}_\mathrm{antena} \right|^2
+$$
 
 Algunos casos:
 
@@ -348,31 +344,27 @@ Este modelo no incluye paredes, mobiliario ni otros objetos.
 
 Primero se calcula la potencia que realmente entra al rectificador:
 
-\[
-P_\mathrm{in}=P_r(1-|\Gamma_r|^2)
-\]
+$$
+P_\mathrm{in} = P_r\left(1-|\Gamma_r|^2\right)
+$$
 
 La eficiencia se modela mediante:
 
-\[
-\eta(P_\mathrm{in})
-=
-\eta_\mathrm{max}
-\frac{P_\mathrm{in}}
-{P_\mathrm{in}+P_0}
-\]
+$$
+\eta(P_\mathrm{in}) = \eta_\mathrm{max}\,\frac{P_\mathrm{in}}{P_\mathrm{in}+P_0}
+$$
 
 Después:
 
-\[
-P_\mathrm{DC}=\eta P_\mathrm{in}
-\]
+$$
+P_\mathrm{DC} = \eta\,P_\mathrm{in}
+$$
 
 y para una carga resistiva:
 
-\[
-V_o=\sqrt{P_\mathrm{DC}R_L}
-\]
+$$
+V_o = \sqrt{P_\mathrm{DC}\,R_L}
+$$
 
 ---
 
