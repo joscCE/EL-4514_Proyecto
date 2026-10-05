@@ -271,33 +271,18 @@ La potencia entregada a la antena se calcula considerando las pérdidas del cabl
 ## 5.2 Densidad de potencia
 
 Para una antena en espacio libre:
-
-\[
-\overline S(d)=
-\frac{P_\mathrm{rad}G_\mathrm{TX}}
-{4\pi d^2}
-\]
-
+$$\overline{S}(d) = \frac{P_{\mathrm{rad}} \, G_{\mathrm{TX}}}{4\pi d^{2}}$$
 donde:
 
-- \(P_\mathrm{rad}\): potencia entregada a la antena TX.
-- \(G_\mathrm{TX}\): ganancia lineal de la antena TX.
-- \(d\): distancia entre las antenas.
-- \(\overline S\): densidad de potencia en W/m².
+$P_{\mathrm{rad}}$: potencia entregada a la antena TX.
+$G_{\mathrm{TX}}$: ganancia lineal de la antena TX.
+$d$: distancia entre las antenas.
+$\overline{S}$: densidad de potencia en W/m².
 
 El campo eléctrico se obtiene mediante:
-
-\[
-E_0=\sqrt{2\eta_0\overline S}
-\]
-
+$$E_{0} = \sqrt{2\eta_{0}\overline{S}}$$
 con:
-
-\[
-\eta_0\approx377\ \Omega
-\]
-
----
+$$\eta_{0} \approx 377\,\Omega$$
 
 ## 5.3 Potencia recibida
 
