@@ -417,6 +417,60 @@ $$E_{0} = \sqrt{2\eta_{0}\overline{S}}$$
 con:
 $$\eta_{0} \approx 377\,\Omega$$
 
+### 5.2.1 Distancia de campo lejano
+ 
+La ecuación de `S(d)` —y la de Friis en 5.3— solo es válida en campo lejano. La distancia mínima de campo lejano es:
+ 
+$$
+d_F = \frac{2D^2}{\lambda}
+$$
+ 
+donde `D` es la dimensión mayor de la antena. Como el tipo de antena TX/RX lo define otro grupo, conviene calcular `d_F` para varias geometrías candidatas y usar el peor caso (el `d_F` más grande) como distancia mínima de prueba:
+ 
+| Antena | D | d_F |
+|---|---:|---:|
+| Dipolo λ/2 | 0,345 m | 0,35 m |
+| Monopolo λ/4 | 0,173 m | 0,09 m |
+| Yagi 3 elementos (~0,8λ) | 0,553 m | 0,88 m |
+| Yagi 5 elementos (~1,2λ) | 0,829 m | 1,99 m |
+ 
+(valores con `λ ≈ 0,691 m`, caso base). Si se mide a una distancia menor que `d_F` de la antena finalmente elegida, el modelo de Friis deja de ser una aproximación válida y los resultados teóricos de esta sección no deben compararse directamente con esa medición.
+ 
+### 5.2.2 Zona de Fresnel y despeje del trayecto
+ 
+La ecuación anterior supone propagación en espacio libre, sin obstáculos cerca del trayecto directo. Esto es válido solo si la primera zona de Fresnel está despejada. Su radio a la mitad del enlace es:
+ 
+$$
+F_1(d) = 0.5\sqrt{\lambda d}
+$$
+ 
+Para el caso base, a 1 m de distancia, `F1 ≈ 0.29 m`. Si la mesa, la estructura de soporte u otro objeto del montaje entra dentro de ese radio alrededor de la línea TX–RX, hay que esperar pérdida adicional por difracción que este modelo **no** captura. Esta verificación le corresponde al subgrupo de medición/estructura al definir la plataforma de pruebas: la distancia lateral mínima de despeje recomendada es `F1(d)` a la distancia de operación elegida.
+
+### 5.2.3 Zona de seguridad (límites ICNIRP)
+ 
+La misma `S(d)` de 5.2 se compara contra los niveles de referencia de exposición de ICNIRP (2020) para 400–2000 MHz:
+ 
+$$
+S_\mathrm{límite,\,público} = \frac{f[\mathrm{MHz}]}{200}\ \mathrm{W/m^2}
+\qquad
+S_\mathrm{límite,\,ocupacional} = \frac{f[\mathrm{MHz}]}{40}\ \mathrm{W/m^2}
+$$
+ 
+A 433,92 MHz esto da `S_límite,público ≈ 2,17 W/m²` y `S_límite,ocupacional ≈ 10,85 W/m²`. Despejando `d` de la ecuación de `S(d)` se obtiene la distancia de exclusión, es decir, la distancia mínima a la que debe permanecer una persona sobre el eje de máxima radiación:
+ 
+$$
+d_\mathrm{seguridad} = \sqrt{\frac{P_\mathrm{rad}\,G_\mathrm{TX}}{4\pi\,S_\mathrm{límite}}}
+$$
+ 
+Con el caso base (`P_rad ≈ 1,71 W` tras cable y ROE, `G_TX = 2,15` dBi):
+ 
+| Límite ICNIRP | S_límite | d_seguridad |
+|---|---:|---:|
+| Público general | 2,17 W/m² | 0,32 m |
+| Ocupacional | 10,85 W/m² | 0,14 m |
+ 
+Es decir, a menos de ~30 cm sobre el eje de la antena TX se superaría el límite de exposición para público general. Esta zona de exclusión debe respetarse durante las pruebas (nadie debe colocarse ni asomarse dentro de ese radio mientras el transmisor esté activo), y debe quedar marcada físicamente en el montaje que defina el subgrupo de medición/estructura. 
+
 ## 5.3 Potencia recibida
 
 Se utiliza el área efectiva de la antena RX:
