@@ -15,17 +15,17 @@ El programa permite estudiar cómo cambia la potencia recibida y el voltaje DC e
 
 El teorema de Poynting establece que la potencia electromagnética que fluye a través de una superficie se puede calcular mediante el vector de Poynting, definido como:
 
-\[
+$$
 \mathbf{S} = \mathbf{E} \times \mathbf{H}
-\]
+$$
 
 La magnitud de este vector representa la potencia por unidad de área, usualmente expresada en W/m².
 
-En el caso de una antena transmisora que irradia en el espacio libre, la densidad de potencia a una distancia \(d\) se obtiene a partir de la potencia radiada \(P_{\mathrm{rad}}\) y la ganancia de la antena \(G_{\mathrm{TX}}\):
+En el caso de una antena transmisora que irradia en el espacio libre, la densidad de potencia a una distancia $d$ se obtiene a partir de la potencia radiada $P_{\mathrm{rad}}$ y la ganancia de la antena $G_{\mathrm{TX}}$:
 
-\[
+$$
 S(d) = \frac{P_{\mathrm{rad}} \, G_{\mathrm{TX}}}{4\pi d^{2}}
-\]
+$$
 
 De esta ecuación podemos notar que la densidad de potencia disminuye con el cuadrado de la distancia.
 
@@ -33,16 +33,16 @@ De esta ecuación podemos notar que la densidad de potencia disminuye con el cua
 
 La ecuación de Friis permite calcular la potencia recibida por una antena a partir de la potencia radiada, las ganancias de ambas antenas y la distancia que las separa:
 
-\[
+$$
 P_{r} = P_{\mathrm{rad}} \, G_{\mathrm{TX}} \, G_{\mathrm{RX}} \left( \frac{\lambda}{4\pi d} \right)^{2}
-\]
+$$
 
 Donde:
 
-- \(P_{r}\) es la potencia recibida,
-- \(G_{\mathrm{TX}}\) y \(G_{\mathrm{RX}}\) son las ganancias de las antenas transmisora y receptora,
-- \(\lambda\) es la longitud de onda,
-- \(d\) es la distancia entre las antenas.
+- $P_{r}$ es la potencia recibida,
+- $G_{\mathrm{TX}}$ y $G_{\mathrm{RX}}$ son las ganancias de las antenas transmisora y receptora,
+- $\lambda$ es la longitud de onda,
+- $d$ es la distancia entre las antenas.
 
 Esta es una ecuación importante para entender cómo la potencia recibida varía con la distancia.
 
@@ -52,12 +52,12 @@ La polarización describe la orientación del campo eléctrico de la onda electr
 
 Cuando la polarización de la onda incidente no coincide con la polarización de la antena receptora, se produce una pérdida de potencia. Esta pérdida se cuantifica mediante el PLF:
 
-\[
+$$
 \mathrm{PLF} = \left| \hat{e}_{\mathrm{onda}}^{*} \cdot \hat{e}_{\mathrm{antena}} \right|^{2}
-\]
+$$
 
-- \(\hat{e}_{\mathrm{onda}}\): vector unitario que describe la dirección del campo eléctrico en la onda incidente  
-- \(\hat{e}_{\mathrm{antena}}\): vector unitario que describe la polarización de la antena receptora  
+- $\hat{e}_{\mathrm{onda}}$: vector unitario que describe la dirección del campo eléctrico en la onda incidente  
+- $\hat{e}_{\mathrm{antena}}$: vector unitario que describe la polarización de la antena receptora  
 
 Algunos casos importantes:
 
@@ -72,18 +72,18 @@ La orientación de las antenas es muy importante de tener en cuenta.
 
 **Razón de onda estacionaria (ROE) y el coeficiente de reflexión**
 
-Cuando existe un desacople de impedancias entre una línea de transmisión y una antena (o entre la antena receptora y el rectificador), parte de la potencia se refleja. Esta reflexión se caracteriza mediante el coeficiente de reflexión \(\Gamma\):
+Cuando existe un desacople de impedancias entre una línea de transmisión y una antena (o entre la antena receptora y el rectificador), parte de la potencia se refleja. Esta reflexión se caracteriza mediante el coeficiente de reflexión $\Gamma$:
 
-\[
+$$
 |\Gamma| = \frac{\mathrm{ROE}-1}{\mathrm{ROE}+1}
-\]
+$$
 
 La ROE (Razón de Onda Estacionaria) es un parámetro que indica qué tan bien adaptado está el sistema:
 
 - ROE = 1 → adaptación perfecta (no hay reflexión)
 - ROE > 1 → existe potencia reflejada
 
-La potencia que realmente se entrega o se recibe se reduce por el factor \((1-|\Gamma|^{2})\). Por lo tanto, controlar la ROE es fundamental para maximizar la transferencia de energía.
+La potencia que realmente se entrega o se recibe se reduce por el factor $(1-|\Gamma|^{2})$. Por lo tanto, controlar la ROE es fundamental para maximizar la transferencia de energía.
 
 **Rectenna y eficiencia RF → DC**
 
@@ -91,23 +91,23 @@ Una rectenna (rectifying antenna) es el conjunto formado por la antena receptora
 
 La eficiencia de esta conversión se define como:
 
-\[
+$$
 \eta = \frac{P_{\mathrm{DC}}}{P_{\mathrm{in}}}
-\]
+$$
 
-Donde \(P_{\mathrm{in}}\) es la potencia de RF que llega al rectificador y \(P_{\mathrm{DC}}\) es la potencia continua entregada a la carga.
+Donde $P_{\mathrm{in}}$ es la potencia de RF que llega al rectificador y $P_{\mathrm{DC}}$ es la potencia continua entregada a la carga.
 
 En la práctica, la eficiencia no es constante: depende de la potencia de entrada. A potencias muy bajas, la eficiencia disminuye porque los diodos del rectificador no conducen de manera óptima. Por esta razón, en el modelo se utiliza una expresión aproximada de la forma:
 
-\[
+$$
 \eta(P_{\mathrm{in}}) = \eta_{\mathrm{max}} \cdot \frac{P_{\mathrm{in}}}{P_{\mathrm{in}} + P_{0}}
-\]
+$$
 
 Esta relación permite estimar el voltaje que se obtiene sobre la carga resistiva a partir de la potencia DC:
 
-\[
+$$
 V_{o} = \sqrt{P_{\mathrm{DC}} \, R_{L}}
-\]
+$$
 
 **Alternativas consideradas**
 
@@ -140,9 +140,9 @@ Se consideraron dos posibilidades: asumir una eficiencia constante o utilizar un
 
 Se eligió un modelo aproximado de la forma
 
-\[
+$$
 \eta(P_{\mathrm{in}}) = \eta_{\mathrm{max}} \cdot \frac{P_{\mathrm{in}}}{P_{\mathrm{in}} + P_{0}}
-\]
+$$
 
 porque representa mejor el comportamiento de los rectificadores a bajas potencias. Se reconoce que este modelo deberá actualizarse cuando se disponga de datos experimentales del rectificador real.
 ## 1. Archivos
