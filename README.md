@@ -11,6 +11,86 @@ Transmisor → Cable → Antena TX )))) espacio libre (((( Antena RX → Rectifi
 El programa permite estudiar cómo cambia la potencia recibida y el voltaje DC en función de la distancia, considerando pérdidas del cable, ROE, ganancia de las antenas, polarización y, opcionalmente, una reflexión en el piso.
 
 ---
+Densidad de potencia y Teorema de Poynting.
+El teorema de Poynting establece que la potencia electromagnética que fluye a través de una superficie se puede calcular mediante el vector de Poynting , definido como:
+S=E×H
+
+La magnitud de este vector representa la potencia por unidad de área, usualmente expresada en W/m².
+En el caso de una antena transmisora que irradia en el espacio libre, la densidad de potencia a una distancia d se obtiene a partir de la potencia radiada P_rady la ganancia de la antena G_TX:
+S(d)=(P_rad " " G_TX)/(4πd^2 )
+De esta ecuación podemos notar que comienza a disminuir con d^2.
+Ecuación de Friis.
+La ecuación de Friis permite calcular la potencia recibida por una antena a partir de la potencia radiada, las ganancias de ambas antenas y la distancia que las separa:
+P_r=P_rad " " G_TX " " G_RX (λ/4πd)^2
+
+Donde:
+	P_res la potencia recibida,
+	G_TX y G_RXson las ganancias de las antenas transmisora y receptora,
+	λ es la longitud de onda,
+	d es la distancia entre las antenas.
+Ecuación importante para entender como la potencia recibida varia con la distancia
+
+Polarización y factor de pérdida de polarización (PLF).
+La polarización describe la orientación del campo eléctrico de la onda electromagnética. Puede ser lineal o circular,derecha o izquierda.
+Cuando la polarización de la onda incidente no coincide con la polarización de la antena receptora, se produce una pérdida de potencia. Esta pérdida se cuantifica mediante el PLF:
+PLF=∣e ̂_onda⋅e ̂_antena ∣^2
+
+	e ̂_onda vector unitario que describe la dirección del campo eléctrico en la onda incidente
+	e ̂_antena vector unitario que describe la polarización de la antena receptora
+Algunos casos importantes:
+	Polarizaciones lineales perfectamente alineadas → PLF = 1 (sin pérdida)
+	Polarizaciones lineales a 45° → PLF = 0.5
+	Polarizaciones lineales ortogonales (90°) → PLF = 0 (pérdida total)
+	Polarización lineal con circular → PLF = 0.5
+	Circulares del mismo sentido → PLF = 1
+	Circulares de sentido opuesto → PLF = 0
+La orientación de las antenas es muy importante de tenerlo en cuenta.
+
+Razón de onda estacionaria (ROE) y el coeficiente de reflexión.
+Cuando existe un desacople de impedancias entre una línea de transmisión y una antena (o entre la antena receptora y el rectificador), parte de la potencia se refleja. Esta reflexión se caracteriza mediante el coeficiente de reflexión  Γ:
+∣Γ∣=(ROE-1)/(ROE+1)
+
+La ROE (Razón de Onda Estacionaria) es un parámetro que indica qué tan bien adaptado está el sistema:
+	ROE = 1 → adaptación perfecta (no hay reflexión)
+	ROE > 1 → existe potencia reflejada
+La potencia que realmente se entrega o se recibe se reduce por el factor (1-∣Γ∣^2 ). Por lo tanto, controlar la ROE es fundamental para maximizar la transferencia de energía.
+________________________________________
+Rectenna y eficiencia RF → DC
+Una rectenna (rectifying antenna) es el conjunto formado por la antena receptora y un circuito rectificador de onda que convierte la señal de radiofrecuencia (RF) en corriente continua (DC).
+La eficiencia de esta conversión se define como:
+η=P_DC/P_in 
+
+Donde P_ines la potencia de RF que llega al rectificador y P_DCes la potencia continua entregada a la carga.
+En la práctica, la eficiencia no es constante: depende de la potencia de entrada. A potencias muy bajas, la eficiencia disminuye porque los diodos del rectificador no conducen de manera óptima. Por esta razón, en el modelo se utiliza una expresión aproximada de la forma:
+η(P_in )=η_max⋅P_in/(P_in+P_0 )
+
+Esta relación permite estimar el voltaje que se obtiene sobre la carga resistiva a partir de la potencia DC:
+V_o=√(P_DC " " R_L )
+
+
+
+Alternativas consideradas
+Durante la etapa inicial del proyecto se evaluaron distintas formas de modelar el enlace de transmisión inalámbrica de energía. Las principales alternativas consideradas fueron las siguientes:
+a) Modelo de propagación
+Se analizaron dos enfoques:
+	Modelo de espacio libre (ecuación de Friis), que considera únicamente el rayo directo entre las antenas.
+	Modelo de dos rayos, que incluye el rayo directo y el rayo reflejado en el piso.
+Se decidió implementar ambos. Por defecto la simulación utiliza el modelo de espacio libre, y se dejó la posibilidad de activar la reflexión en el piso mediante un parámetro, con el fin de estudiar el efecto de la interferencia entre ambos rayos.
+
+b) Tratamiento de la polarización
+Se consideró la opción de asumir polarización perfectamente alineada (PLF = 1) frente a incluir el cálculo del factor de pérdida de polarización.
+Se optó por implementar el cálculo completo del PLF, permitiendo seleccionar polarización lineal o circular y el ángulo de desalineación entre las antenas, ya que este factor puede reducir significativamente la potencia recibida.
+
+c) Pérdidas por desacople (ROE)
+Se evaluó ignorar las pérdidas por desadaptación o incluirlas.
+Se decidió incorporar el efecto de la ROE tanto en la antena transmisora como en la entrada del rectificador, mediante el coeficiente de reflexión, para obtener una estimación más realista de la potencia entregada y recibida.
+
+d) Modelo de eficiencia del rectificador
+Se consideraron dos posibilidades: asumir una eficiencia constante o utilizar un modelo que dependa de la potencia de entrada.
+Se eligió un modelo aproximado de la forma
+η(P_in )=η_max⋅P_in/(P_in+P_0 )
+
+porque representa mejor el comportamiento de los rectificadores a bajas potencias. Se reconoce que este modelo deberá actualizarse cuando se disponga de datos experimentales del rectificador real.
 
 ## 1. Archivos
 
